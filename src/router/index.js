@@ -110,6 +110,30 @@ export default new Router({
 })
 
 export const asyncRouterMap = [
+  // -------- webstreamer demo begin -----
+  {
+    path: '/webrtc',
+    component: Layout,
+    redirect: '/webrtc/index',
+    alwaysShow: true, // will always show the root menu
+    meta: {
+      title: 'webrtc',
+      icon: 'webrtc',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'console',
+        component: () => import('@/views/webrtc/console'),
+        name: 'WebrtcConsole',
+        meta: {
+          title: 'webrtcConsole',
+          roles: ['admin', 'editor'] // you can set roles in root nav
+        }
+      }
+    ]
+  },
+  // -------- webstreamer demo end   -----
   {
     path: '/permission',
     component: Layout,

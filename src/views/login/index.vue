@@ -36,7 +36,18 @@
           <svg-icon icon-class="eye" />
         </span>
       </el-form-item>
-
+      <el-form-item prop="webstreamer">
+        <span class="svg-container">
+          <svg-icon icon-class="international" />
+        </span>
+        <el-input
+          v-model="webstreamer"
+          :placeholder="webstreamer"
+          name="webstreamer"
+          type="text"
+          auto-complete="on"
+        />
+      </el-form-item>
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">{{ $t('login.logIn') }}</el-button>
 
       <div class="tips">
@@ -97,7 +108,8 @@ export default {
       passwordType: 'password',
       loading: false,
       showDialog: false,
-      redirect: undefined
+      redirect: undefined,
+      webstreamer: 'http://127.0.0.1:8080' // window.location.origin
     }
   },
   watch: {
@@ -126,6 +138,7 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
+          window.webstreamer = { apiUrl: this.webstreamer }
           this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
             this.loading = false
             this.$router.push({ path: this.redirect || '/' })
