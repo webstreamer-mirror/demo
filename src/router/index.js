@@ -130,6 +130,38 @@ export const asyncRouterMap = [
           title: 'webrtcConsole',
           roles: ['admin', 'editor'] // you can set roles in root nav
         }
+      },
+      {
+        path: 'console-1',
+        component: () => import('@/views/webrtc/console-1'),
+        name: 'WebrtcConsole1',
+        meta: {
+          title: 'webrtcConsole1',
+          roles: ['admin', 'editor'] // you can set roles in root nav
+        }
+      }
+
+    ]
+  },
+  {
+    path: '/hls',
+    component: Layout,
+    redirect: '/hls/index',
+    alwaysShow: true, // will always show the root menu
+    meta: {
+      title: 'HLS',
+      icon: 'hls',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'console',
+        component: () => import('@/views/hls/console'),
+        name: 'HLS-Console',
+        meta: {
+          title: 'HLS-Console',
+          roles: ['admin', 'editor'] // you can set roles in root nav
+        }
       }
     ]
   },
